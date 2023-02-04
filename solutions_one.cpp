@@ -4,8 +4,13 @@ using namespace std;
 /****** Enums ***************/
 enum enNumberType
 {
-    odd = 1,
-    Even = 2
+    ODD = 1,
+    EVEN = 2
+};
+enum enPassFail
+{
+    PASS = 1,
+    FAIL = 2
 };
 /********** Structs ************/
 struct stInfo
@@ -31,16 +36,16 @@ enNumberType checkNumberType(int number)
     int result = number % 2;
     if (result == 0)
     {
-        return enNumberType::Even;
+        return enNumberType::EVEN;
     }
     else
     {
-        return enNumberType::odd;
+        return enNumberType::ODD;
     }
 }
 void printNumberType(enNumberType number)
 {
-    if (number == enNumberType::Even)
+    if (number == enNumberType::EVEN)
     {
         cout << "The Number You Have Entered was Even" << endl;
     }
@@ -113,13 +118,42 @@ void printFullName(string fullName)
 {
     cout << "Your Full Name is => " << fullName << endl;
 }
-float calculateNumber(int number)
+float calculateNumber(float number)
 {
-    return (float)number / 2;
+    return number /= 2;
 }
-void printNumber(float number)
+void printNumber(int number)
 {
-    cout << number << endl;
+    cout << "Half of (" + to_string(number) + ") is => " + to_string(calculateNumber(number)) << endl;
+}
+int readMark()
+{
+    int mark;
+    cout << "Enter Your Mark: ";
+    cin >> mark;
+    return mark;
+}
+enPassFail checkMark(int mark)
+{
+    if (mark >= 50)
+    {
+        return enPassFail::PASS;
+    }
+    else
+    {
+        return enPassFail::FAIL;
+    }
+}
+void printPassOrFail(int mark)
+{
+    if (checkMark(mark) == enPassFail::PASS)
+    {
+        cout << "PASS" << endl;
+    }
+    else
+    {
+        cout << "FAIL" << endl;
+    }
 }
 int main()
 {
@@ -127,6 +161,7 @@ int main()
     // printNumberType(checkNumberType(readNumber()));
     // printResult(readInfo());
     // printFullName(getFullName(readFullName(), true));
-    printNumber(calculateNumber(readNumber()));
+    // printNumber(readNumber());
+    printPassOrFail(readMark());
     return 0;
 }
