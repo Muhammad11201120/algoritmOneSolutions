@@ -113,11 +113,20 @@ void printFullName(string fullName)
 {
     cout << "Your Full Name is => " << fullName << endl;
 }
+float calculateNumber(int number)
+{
+    return (float)number / 2;
+}
+void printNumber(float number)
+{
+    cout << number << endl;
+}
 int main()
 {
     // printName(readName());
     // printNumberType(checkNumberType(readNumber()));
     // printResult(readInfo());
-    printFullName(getFullName(readFullName(), true));
+    // printFullName(getFullName(readFullName(), true));
+    printNumber(calculateNumber(readNumber()));
     return 0;
 }
