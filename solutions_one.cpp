@@ -174,10 +174,18 @@ float AverageOfThreeMarks()
 
     for (int i = 0; i < 3; i++)
     {
-        marks[i] = readNumber();
+        marks[i] = readMark();
         result += marks[i];
     }
     return result / 3;
+}
+enPassFail checkAverage()
+{
+    float average = AverageOfThreeMarks();
+    if (average >= 50)
+        return enPassFail::PASS;
+    else
+        return enPassFail::FAIL;
 }
 void printSumNumbersResult(int result)
 {
@@ -187,6 +195,15 @@ void printAverageOfThreeNumbersResult(float result)
 {
     cout << "The Average  is => " << result << endl;
 }
+void printPassOrFailAverage(enPassFail result)
+{
+    if (result == enPassFail::PASS)
+        cout << "You Are Passed";
+    else
+        cout << "You Are Failed";
+}
+
+/************** Main Function **************/
 
 int main()
 {
@@ -198,6 +215,6 @@ int main()
     // printPassOrFail(readMark());
     // printSumNumbersResult(calculateSumNumbers());
     // printAverageOfThreeNumbersResult(AverageOfThreeMarks());
-    cout << sizeof(AverageOfThreeMarks());
+    printPassOrFailAverage(checkAverage());
     return 0;
 }
