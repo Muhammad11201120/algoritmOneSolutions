@@ -155,6 +155,39 @@ void printPassOrFail(int mark)
         cout << "FAIL" << endl;
     }
 }
+int calculateSumNumbers()
+{
+    int numbers[3];
+    int result = 0;
+
+    for (int i = 0; i < 3; i++)
+    {
+        numbers[i] = readNumber();
+        result += numbers[i];
+    }
+    return result;
+}
+float AverageOfThreeMarks()
+{
+    int marks[3];
+    float result = 0;
+
+    for (int i = 0; i < 3; i++)
+    {
+        marks[i] = readNumber();
+        result += marks[i];
+    }
+    return result / 3;
+}
+void printSumNumbersResult(int result)
+{
+    cout << "The Result is => " << result << endl;
+}
+void printAverageOfThreeNumbersResult(float result)
+{
+    cout << "The Average  is => " << result << endl;
+}
+
 int main()
 {
     // printName(readName());
@@ -162,6 +195,9 @@ int main()
     // printResult(readInfo());
     // printFullName(getFullName(readFullName(), true));
     // printNumber(readNumber());
-    printPassOrFail(readMark());
+    // printPassOrFail(readMark());
+    // printSumNumbersResult(calculateSumNumbers());
+    // printAverageOfThreeNumbersResult(AverageOfThreeMarks());
+    cout << sizeof(AverageOfThreeMarks());
     return 0;
 }
