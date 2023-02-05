@@ -179,9 +179,9 @@ float AverageOfThreeMarks()
     }
     return result / 3;
 }
-enPassFail checkAverage()
+enPassFail checkAverage(float average)
 {
-    float average = AverageOfThreeMarks();
+
     if (average >= 50)
         return enPassFail::PASS;
     else
@@ -202,7 +202,22 @@ void printPassOrFailAverage(enPassFail result)
     else
         cout << "You Are Failed";
 }
-
+int maxOfTwoNumbers()
+{
+    int numbers[2];
+    for (int i = 0; i < 2; i++)
+    {
+        numbers[i] = readNumber();
+    }
+    if (numbers[0] > numbers[1])
+        return numbers[0];
+    else
+        return numbers[1];
+}
+void printMaxOfTwoNumbers(int number)
+{
+    cout << "Max Number is => " << number << endl;
+}
 /************** Main Function **************/
 
 int main()
@@ -215,6 +230,7 @@ int main()
     // printPassOrFail(readMark());
     // printSumNumbersResult(calculateSumNumbers());
     // printAverageOfThreeNumbersResult(AverageOfThreeMarks());
-    printPassOrFailAverage(checkAverage());
+    // printPassOrFailAverage(checkAverage(AverageOfThreeMarks()));
+    printMaxOfTwoNumbers(maxOfTwoNumbers());
     return 0;
 }
