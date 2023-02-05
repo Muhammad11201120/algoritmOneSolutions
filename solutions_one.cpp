@@ -204,19 +204,30 @@ void printPassOrFailAverage(enPassFail result)
 }
 int maxOfTwoNumbers()
 {
-    int numbers[2];
-    for (int i = 0; i < 2; i++)
+    int numbers[3];
+    for (int i = 0; i < 3; i++)
     {
         numbers[i] = readNumber();
     }
-    if (numbers[0] > numbers[1])
+    if (numbers[0] > numbers[1] && numbers[0] > numbers[2])
         return numbers[0];
-    else
+    else if (numbers[1] > numbers[0] && numbers[1] > numbers[2])
         return numbers[1];
+    else if (numbers[2] > numbers[0] && numbers[2] > numbers[1])
+        return numbers[2];
+    else
+        return 0;
 }
 void printMaxOfTwoNumbers(int number)
 {
     cout << "Max Number is => " << number << endl;
+}
+void printMaxOfThreeNumbers(int number)
+{
+    if (number)
+        cout << "Max Number is => " << number << endl;
+    else
+        cout << "They Are Equal.." << endl;
 }
 /************** Main Function **************/
 
@@ -231,6 +242,6 @@ int main()
     // printSumNumbersResult(calculateSumNumbers());
     // printAverageOfThreeNumbersResult(AverageOfThreeMarks());
     // printPassOrFailAverage(checkAverage(AverageOfThreeMarks()));
-    printMaxOfTwoNumbers(maxOfTwoNumbers());
+    // printMaxOfThreeNumbers(maxOfTwoNumbers());
     return 0;
 }
