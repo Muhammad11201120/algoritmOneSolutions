@@ -1,2 +1,1 @@
-    // readNumbers(a, b);
-    // printTrangleArea(calculateTriangleArea(a, b));
+(2 * (a + b))

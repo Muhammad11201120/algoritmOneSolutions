@@ -89,6 +89,29 @@ void printCircleAreaInscribedInSquare(float area)
 {
     cout << "Area Of The Circle is => " << area << endl;
 }
+float readTheCircumference()
+{
+    float l;
+    cout << "Enter L Of The Circum: ";
+    cin >> l;
+    return l;
+}
+float calculateCircleAreaAlongTheCircumference(float l)
+{
+    return pow(l, 2) / (4 * 3.14);
+}
+void printCircleAreaAlongTheCircumference(float area)
+{
+    cout << "The Area Of the Circle is => " << area << endl;
+}
+float calculateCircleAreaInscribedInAnIsoscelesTriangle(float a, float b)
+{
+    return 3.14 * (pow(b, 2) / 4) * (2 * (a - b)) / (2 * (a + b));
+}
+void printCircleAreaInscribedInAnIsoscelesTriangle(float area)
+{
+    cout << "The Area Of The Circle is => " << area << endl;
+}
 int main()
 {
     float a, b; // here is a vars to send it by reffferance
@@ -102,6 +125,9 @@ int main()
     // readNumber(a);
     // printCircleArea(calculateCircleArea(a));
     // printCircleAreaThroughDiameter(calculateCircleAreaThroughDiameter(readDiameter()));
-    printCircleAreaInscribedInSquare(calculateCircleAreaInscribedInSquare(readCircleAreaInscribedInASquare()));
+    // printCircleAreaInscribedInSquare(calculateCircleAreaInscribedInSquare(readCircleAreaInscribedInASquare()));
+    // printCircleAreaAlongTheCircumference(calculateCircleAreaAlongTheCircumference(readTheCircumference()));
+    readNumbers(a, b);
+    printCircleAreaInscribedInAnIsoscelesTriangle(calculateCircleAreaInscribedInAnIsoscelesTriangle(a, b));
     return 0;
 }
