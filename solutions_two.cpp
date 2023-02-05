@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <string>
 #include <cmath>
@@ -104,17 +105,72 @@ void printCircleAreaAlongTheCircumference(float area)
 {
     cout << "The Area Of the Circle is => " << area << endl;
 }
-float calculateCircleAreaInscribedInAnIsoscelesTriangle(float a, float b)
+float calculateCircleAreaInscribedInAnIsoscelesTriangle(float &a, float &b)
 {
-    return 3.14 * (pow(b, 2) / 4) * (2 * (a - b)) / (2 * (a + b));
+    return 3.14 * (pow(b, 2) / 4) * (2 * a - b) / (2 * a + b);
 }
 void printCircleAreaInscribedInAnIsoscelesTriangle(float area)
 {
     cout << "The Area Of The Circle is => " << area << endl;
 }
+void readCircleAreaDescribedAroundAnArbitaryTriangle(float &a, float &b, float &c)
+{
+    cout << "Enter A :";
+    cin >> a;
+    cout << "Enter B: ";
+    cin >> b;
+    cout << "Enter C: ";
+    cin >> c;
+}
+float calculateCircleAreaDescribedAroundAnArbitaryTriangle(float a, float b, float c)
+{
+    float p = (a + b + c) / 2;
+    return 3.14 * pow(((a * b * c) / (4 * sqrt(p * (p - a) * (p - b) * (p - c)))), 2);
+}
+void printCircleAreaDescribedAroundAnArbitaryTriangle(float area)
+{
+    cout << "Area Of This Triangle is => " << area << endl;
+}
+short readAge()
+{
+    short age;
+    cout << "Enter Your Age: ";
+    cin >> age;
+    return age;
+}
+bool validateNumberInRange(int number, int from, int to)
+{
+    return (number >= from && number <= to);
+}
+void printAgeValidation(short age)
+{
+    if (validateNumberInRange(age, 18, 45))
+    {
+        cout << "(" << age << ") Years => Valid Age";
+    }
+    else
+    {
+        cout << "(" << age << ") Years => Invalid Age";
+    }
+}
+short readAgeUntilBetween(short from, short to)
+{
+    short age = 0;
+    do
+    {
+        age = readAge();
+
+    } while (!validateNumberInRange(age, 18, 45));
+
+    return age;
+}
+void printAgeResult(short age)
+{
+    cout << "You Are Valid";
+}
 int main()
 {
-    float a, b; // here is a vars to send it by reffferance
+    float a, b, c; // here is a vars to send it by reffferance
     // readNumbers(a, b);
     // printrectangleArea(calculateTriangleArea(a, b));
     // swap(a, b);
@@ -127,7 +183,11 @@ int main()
     // printCircleAreaThroughDiameter(calculateCircleAreaThroughDiameter(readDiameter()));
     // printCircleAreaInscribedInSquare(calculateCircleAreaInscribedInSquare(readCircleAreaInscribedInASquare()));
     // printCircleAreaAlongTheCircumference(calculateCircleAreaAlongTheCircumference(readTheCircumference()));
-    readNumbers(a, b);
-    printCircleAreaInscribedInAnIsoscelesTriangle(calculateCircleAreaInscribedInAnIsoscelesTriangle(a, b));
+    // readNumbers(a, b);
+    // printCircleAreaInscribedInAnIsoscelesTriangle(calculateCircleAreaInscribedInAnIsoscelesTriangle(a, b));
+    // readCircleAreaDescribedAroundAnArbitaryTriangle(a, b, c);
+    // printCircleAreaDescribedAroundAnArbitaryTriangle(calculateCircleAreaDescribedAroundAnArbitaryTriangle(a, b, c));
+    // printAgeValidation(readAge());
+    printAgeResult(readAgeUntilBetween(18, 45));
     return 0;
 }
