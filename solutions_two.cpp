@@ -168,26 +168,67 @@ void printAgeResult(short age)
 {
     cout << "You Are Valid";
 }
+int readN()
+{
+    int n;
+    cout << "Enter A Number To Count From  : ";
+    cin >> n;
+    return n;
+}
+void printNumberFromOneToN(int number)
+{
+
+    for (int i = 1; i <= number; i++)
+    {
+        cout << "Number => " << i << endl;
+    }
+}
+void printNumbersFromNToOne(int number)
+{
+    for (int i = number; i >= 1; i--)
+    {
+        cout << "Number => " << i << endl;
+    }
+}
+int calculateOddFromOneToN(int number)
+{
+    int result = 0;
+    for (int i = 1; i <= number; i++)
+    {
+        if (i % 2 != 0)
+        {
+            result += i;
+        }
+    }
+    return result;
+}
+void printSumOddToN(int result)
+{
+    cout << "Result Of Odd Sum => " << result << endl;
+}
 int main()
 {
     float a, b, c; // here is a vars to send it by reffferance
-    // readNumbers(a, b);
-    // printrectangleArea(calculateTriangleArea(a, b));
-    // swap(a, b);
-    // readNumbers(a, b);
-    // printRectangleAreaThroughDiagonal(calculateRectangleAreaThroughDiagonal(a, b));
-    // readNumbers(a, b);
-    // printTriangleArea(calculateTriangleArea(a, b));
-    // readNumber(a);
-    // printCircleArea(calculateCircleArea(a));
-    // printCircleAreaThroughDiameter(calculateCircleAreaThroughDiameter(readDiameter()));
-    // printCircleAreaInscribedInSquare(calculateCircleAreaInscribedInSquare(readCircleAreaInscribedInASquare()));
-    // printCircleAreaAlongTheCircumference(calculateCircleAreaAlongTheCircumference(readTheCircumference()));
-    // readNumbers(a, b);
-    // printCircleAreaInscribedInAnIsoscelesTriangle(calculateCircleAreaInscribedInAnIsoscelesTriangle(a, b));
-    // readCircleAreaDescribedAroundAnArbitaryTriangle(a, b, c);
-    // printCircleAreaDescribedAroundAnArbitaryTriangle(calculateCircleAreaDescribedAroundAnArbitaryTriangle(a, b, c));
-    // printAgeValidation(readAge());
-    printAgeResult(readAgeUntilBetween(18, 45));
+                   // readNumbers(a, b);
+                   // printrectangleArea(calculateTriangleArea(a, b));
+                   // swap(a, b);
+                   // readNumbers(a, b);
+                   // printRectangleAreaThroughDiagonal(calculateRectangleAreaThroughDiagonal(a, b));
+                   // readNumbers(a, b);
+                   // printTriangleArea(calculateTriangleArea(a, b));
+                   // readNumber(a);
+                   // printCircleArea(calculateCircleArea(a));
+                   // printCircleAreaThroughDiameter(calculateCircleAreaThroughDiameter(readDiameter()));
+                   // printCircleAreaInscribedInSquare(calculateCircleAreaInscribedInSquare(readCircleAreaInscribedInASquare()));
+                   // printCircleAreaAlongTheCircumference(calculateCircleAreaAlongTheCircumference(readTheCircumference()));
+                   // readNumbers(a, b);
+                   // printCircleAreaInscribedInAnIsoscelesTriangle(calculateCircleAreaInscribedInAnIsoscelesTriangle(a, b));
+                   // readCircleAreaDescribedAroundAnArbitaryTriangle(a, b, c);
+                   // printCircleAreaDescribedAroundAnArbitaryTriangle(calculateCircleAreaDescribedAroundAnArbitaryTriangle(a, b, c));
+                   // printAgeValidation(readAge());
+                   // printAgeResult(readAgeUntilBetween(18, 45));
+                   // printNumberFromOneToN(readN());
+    // printNumbersFromNToOne(readN());
+    printSumOddToN(calculateOddFromOneToN(readN()));
     return 0;
 }
