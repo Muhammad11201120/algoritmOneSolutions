@@ -3,6 +3,13 @@
 #include <string>
 #include <cmath>
 using namespace std;
+/*********Enums***********/
+enum enOddOrEven
+{
+    Odd = 1,
+    Even = 2
+};
+/***********Functions************/
 void readNumbers(float &a, float &b)
 {
     cout << "Enter A Number : ";
@@ -190,21 +197,40 @@ void printNumbersFromNToOne(int number)
         cout << "Number => " << i << endl;
     }
 }
+enOddOrEven checkOddOrEvenNumber(int number)
+{
+    if (number % 2 == 0)
+        return enOddOrEven::Even;
+    else
+        return enOddOrEven::Odd;
+}
 int calculateOddFromOneToN(int number)
 {
     int result = 0;
     for (int i = 1; i <= number; i++)
     {
-        if (i % 2 != 0)
+        if (checkOddOrEvenNumber(i) == enOddOrEven::Odd)
         {
             result += i;
         }
     }
     return result;
 }
-void printSumOddToN(int result)
+int calculateEvenFromOneToN(int number)
 {
-    cout << "Result Of Odd Sum => " << result << endl;
+    int result = 0;
+    for (int i = 1; i <= number; i++)
+    {
+        if (checkOddOrEvenNumber(i) == enOddOrEven::Even)
+        {
+            result += i;
+        }
+    }
+    return result;
+}
+void printSumOddorEvenToN(int result)
+{
+    cout << "Result Of  Sum => " << result << endl;
 }
 int main()
 {
@@ -228,7 +254,8 @@ int main()
                    // printAgeValidation(readAge());
                    // printAgeResult(readAgeUntilBetween(18, 45));
                    // printNumberFromOneToN(readN());
-    // printNumbersFromNToOne(readN());
-    printSumOddToN(calculateOddFromOneToN(readN()));
+                   // printNumbersFromNToOne(readN());
+    // printSumOddorEvenToN(calculateOddFromOneToN(readN()));
+    // printSumOddorEvenToN(calculateEvenFromOneToN(readN()));
     return 0;
 }
