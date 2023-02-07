@@ -134,8 +134,20 @@ float readInputs()
     cin >> dollar;
 }
 float calculatePennies(float penny, float nickle, float dime, float quarter, float dollar)
-    /***********’Main*********/
-    int main()
+{
+    penny = penny * 1 + nickle * 5 + dime * 5 + quarter * 5 + dollar * 100;
+    return penny;
+}
+float calculateDollars(float penny, float dollar)
+{
+    penny / 100;
+}
+void printPennyAndDollar()
+{
+    // todo
+}
+/***********’Main*********/
+int main()
 {
     float a, b;
     // printFactorialOfNumber(calculateFactorialOfNumber(readNumber()));
