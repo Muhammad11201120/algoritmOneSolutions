@@ -27,12 +27,30 @@ struct stNumbersWithOperation
 };
 
 /**********Functions**********/
+float readNumber(string msg)
+{
+    float number = 0;
+    cout << msg;
+    cin >> number;
+    return number;
+}
 float readNumber()
 {
     float a;
     do
     {
         cout << "Enter A Number : ";
+        cin >> a;
+    } while (a < 0);
+
+    return a;
+}
+int readIntNumber()
+{
+    int a = 0;
+    do
+    {
+        cout << "Enter A Positive Number : ";
         cin >> a;
     } while (a < 0);
 
@@ -185,7 +203,17 @@ stNumbersWithOperation readINumbersAndOperation()
     cin >> inputs.operatoin;
     return inputs;
 }
-float calculatingTwoNumbers(stNumbersWithOperation inputs)
+int readOperation()
+{
+    int operation = 0;
+    do
+    {
+        cout << "Enter Operation: \n ( 1 ) for ADD \n ( 2 ) for SUB \n ( 3 ) for MULT \n ( 4 ) for DIVIDE \n ";
+        cin >> operation;
+    } while (operation < 1 || operation > 4);
+    return operation;
+}
+float checkOperation(stNumbersWithOperation inputs)
 {
     if (inputs.operatoin == enOperations::ADD)
     {
@@ -208,6 +236,22 @@ float calculatingTwoNumbers(stNumbersWithOperation inputs)
         return 0;
     }
 }
+float checkOperationTwo(float &a, float &b, int operation)
+{
+    switch (operation)
+    {
+    case enOperations::ADD:
+        return a + b;
+    case enOperations::SUB:
+        return a - b;
+    case enOperations::MULT:
+        return a * b;
+    case enOperations::DIVIDE:
+        return a / b;
+    default:
+        return 0;
+    }
+}
 void PrintResultOfTwoNumbers(float result)
 {
     if (result)
@@ -216,13 +260,59 @@ void PrintResultOfTwoNumbers(float result)
     }
     else
     {
-        cout << "You Have Just Entered Wrong Operation.." << endl;
+        cout << "ZERO.." << endl;
     }
+}
+float readSumNumber()
+{
+    float number;
+    cout << "Enter A Number: ";
+    cin >> number;
+    return number;
+}
+float sumUnti99()
+{
+    float a = 0;
+    float result = 0;
+    while (a != -99)
+    {
+        result += a;
+        a = readSumNumber();
+    }
+    return result;
+}
+bool checkIsPrimary(int number)
+{
+    // int n = round(number / 2); // optimizing
+    bool isPrime = true;
+    for (int i = 2; i < number; i++)
+    {
+        if (number % i == 0)
+        {
+            isPrime = false;
+            break;
+        }
+    }
+    return isPrime;
+}
+void printIsPrimaryNumber(bool check)
+{
+    if (check)
+        cout << "Primary" << endl;
+    else
+        cout << "Not Primary" << endl;
+}
+float calculateRemainder(float &totallBill, float &cashPaid)
+{
+    float reminder = cashPaid - totallBill;
+    return reminder;
 }
 /***********’Main*********/
 int main()
 {
-    float a, b;
+    float a;
+    // float b = readNumber();
+    // int operation = readOperation();
     // printFactorialOfNumber(calculateFactorialOfNumber(readNumber()));
     // powerOfThreeNumbers(readNumber());
     // readNumbers(a, b);
@@ -234,6 +324,12 @@ int main()
     // cout << "your Commission is => " << getCommissionPercentage(totalSales) << endl;
     // cout << "Your Commission Percentage is => " << calculateTotallCommission(totalSales) << endl;
     // printPennyAndDollar(calculatePennies(readInputs()));
-    // PrintResultOfTwoNumbers(calculatingTwoNumbers(readINumbersAndOperation()));
+    // PrintResultOfTwoNumbers(checkOperation(readINumbersAndOperation()));
+    // PrintResultOfTwoNumbers(checkOperationTwo(a, b, operation));
+    // cout << sumUnti99();
+    // printIsPrimaryNumber(checkIsPrimary(readIntNumber()));
+    float totallBill = readNumber("Enter Totall Of The Bill: ");
+    float cashPaid = readNumber("Enter The Cash Paid: ");
+    cout << "Your Reminder is => " << calculateRemainder(totallBill, cashPaid);
     return 0;
 }
