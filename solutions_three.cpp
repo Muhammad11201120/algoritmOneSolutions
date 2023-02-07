@@ -2,6 +2,30 @@
 #include <string>
 #include <cmath>
 using namespace std;
+/**********Enums**********/
+enum enOperations
+{
+    ADD = 1,
+    SUB = 2,
+    MULT = 3,
+    DIVIDE = 4
+};
+/**********Structs*********/
+struct stPiggyBankContent
+{
+    float penny;
+    float nickle;
+    float dime;
+    float quarter;
+    float dollar;
+};
+struct stNumbersWithOperation
+{
+    float number1;
+    float number2;
+    int operatoin;
+};
+
 /**********Functions**********/
 float readNumber()
 {
@@ -119,32 +143,81 @@ float calculateTotallCommission(float totalSales)
 {
     return getCommissionPercentage(totalSales) * totalSales;
 }
-float readInputs()
+stPiggyBankContent readInputs()
 {
-    float penny, nickle, dime, quarter, dollar;
+    stPiggyBankContent content;
     cout << "How Many Pennies: ";
-    cin >> penny;
+    cin >> content.penny;
     cout << "How Many Nickles: ";
-    cin >> nickle;
+    cin >> content.nickle;
     cout << "How Many Dimes: ";
-    cin >> dime;
+    cin >> content.dime;
     cout << "How Many Quarters: ";
-    cin >> quarter;
+    cin >> content.quarter;
     cout << "How Many Dollars: ";
-    cin >> dollar;
+    cin >> content.dollar;
+
+    return content;
 }
-float calculatePennies(float penny, float nickle, float dime, float quarter, float dollar)
+float calculatePennies(stPiggyBankContent content)
 {
-    penny = penny * 1 + nickle * 5 + dime * 5 + quarter * 5 + dollar * 100;
-    return penny;
+    float totalPennies = content.penny * 1 + content.nickle * 5 + content.dime * 10 + content.quarter * 25 + content.dollar * 100;
+    return totalPennies;
 }
-float calculateDollars(float penny, float dollar)
+float calculateDollars(float totalPennies)
 {
-    penny / 100;
+    float dollars = totalPennies / 100;
+    return dollars;
 }
-void printPennyAndDollar()
+void printPennyAndDollar(float pennies)
 {
-    // todo
+    cout << "You Have => " << pennies << " Pennies" << endl;
+    cout << "You Have => " << calculateDollars(pennies) << " Dollars" << endl;
+}
+stNumbersWithOperation readINumbersAndOperation()
+{
+    stNumbersWithOperation inputs;
+    cout << "Enter Number 1: ";
+    cin >> inputs.number1;
+    cout << "Enter Number 2: ";
+    cin >> inputs.number2;
+    cout << "Enter Operation: \n ( 1 ) for ADD \n ( 2 ) for SUB \n ( 3 ) for MULT \n ( 4 ) for DIVIDE \n ";
+    cin >> inputs.operatoin;
+    return inputs;
+}
+float calculatingTwoNumbers(stNumbersWithOperation inputs)
+{
+    if (inputs.operatoin == enOperations::ADD)
+    {
+        return inputs.number1 + inputs.number2;
+    }
+    else if (inputs.operatoin == enOperations::SUB)
+    {
+        return inputs.number1 - inputs.number2;
+    }
+    else if (inputs.operatoin == enOperations::MULT)
+    {
+        return inputs.number1 * inputs.number2;
+    }
+    else if (inputs.operatoin == enOperations::DIVIDE)
+    {
+        return inputs.number1 / inputs.number2;
+    }
+    else
+    {
+        return 0;
+    }
+}
+void PrintResultOfTwoNumbers(float result)
+{
+    if (result)
+    {
+        cout << "Result is => " << result << endl;
+    }
+    else
+    {
+        cout << "You Have Just Entered Wrong Operation.." << endl;
+    }
 }
 /***********’Main*********/
 int main()
@@ -160,5 +233,7 @@ int main()
     // float totalSales = readToltalSaales();
     // cout << "your Commission is => " << getCommissionPercentage(totalSales) << endl;
     // cout << "Your Commission Percentage is => " << calculateTotallCommission(totalSales) << endl;
+    // printPennyAndDollar(calculatePennies(readInputs()));
+    // PrintResultOfTwoNumbers(calculatingTwoNumbers(readINumbersAndOperation()));
     return 0;
 }
