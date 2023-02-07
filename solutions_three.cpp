@@ -307,6 +307,10 @@ float calculateRemainder(float &totallBill, float &cashPaid)
     float reminder = cashPaid - totallBill;
     return reminder;
 }
+float calculateBillAfterTaxAndFees(float tottalBill)
+{
+    return tottalBill * 1.1 * 1.16;
+}
 /***********’Main*********/
 int main()
 {
@@ -328,8 +332,16 @@ int main()
     // PrintResultOfTwoNumbers(checkOperationTwo(a, b, operation));
     // cout << sumUnti99();
     // printIsPrimaryNumber(checkIsPrimary(readIntNumber()));
-    float totallBill = readNumber("Enter Totall Of The Bill: ");
-    float cashPaid = readNumber("Enter The Cash Paid: ");
-    cout << "Your Reminder is => " << calculateRemainder(totallBill, cashPaid);
+    // float totallBill = readNumber("Enter Totall Of The Bill: ");
+    // float cashPaid = readNumber("Enter The Cash Paid: ");
+
+    // cout << "\n********************************************\n"
+    //      << endl;
+    // cout << "Your Tottal Bill is => " << totallBill << endl;
+    // cout << "You Have Paid => " << cashPaid << endl;
+    // cout << "Your TotalBill With Tax And Fees is => " << calculateBillAfterTaxAndFees(totallBill) << endl;
+    // cout << "Your Reminder is => " << calculateRemainder(totallBill, cashPaid) << endl;
+    // cout << "\n********************************************" << endl;
+
     return 0;
 }
