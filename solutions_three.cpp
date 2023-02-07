@@ -24,7 +24,6 @@ void readNumbers(float &a, float &b)
         cin >> b;
     } while (a < 0 || b < 0);
 }
-
 float calculateFactorialOfNumber(float number)
 {
     float result = 1;
@@ -120,7 +119,23 @@ float calculateTotallCommission(float totalSales)
 {
     return getCommissionPercentage(totalSales) * totalSales;
 }
-int main()
+float readInputs()
+{
+    float penny, nickle, dime, quarter, dollar;
+    cout << "How Many Pennies: ";
+    cin >> penny;
+    cout << "How Many Nickles: ";
+    cin >> nickle;
+    cout << "How Many Dimes: ";
+    cin >> dime;
+    cout << "How Many Quarters: ";
+    cin >> quarter;
+    cout << "How Many Dollars: ";
+    cin >> dollar;
+}
+float calculatePennies(float penny, float nickle, float dime, float quarter, float dollar)
+    /***********’Main*********/
+    int main()
 {
     float a, b;
     // printFactorialOfNumber(calculateFactorialOfNumber(readNumber()));
@@ -130,8 +145,8 @@ int main()
     // printPwoerOfM(calculatePower(readNumber(), readNumber()));
     // short grade = readGrade(0, 100);
     // printResult(checkGrade(grade));
-    float totalSales = readToltalSaales();
-    cout << "your Commission is => " << getCommissionPercentage(totalSales) << endl;
-    cout << "Your Commission Percentage is => " << calculateTotallCommission(totalSales) << endl;
+    // float totalSales = readToltalSaales();
+    // cout << "your Commission is => " << getCommissionPercentage(totalSales) << endl;
+    // cout << "Your Commission Percentage is => " << calculateTotallCommission(totalSales) << endl;
     return 0;
 }
