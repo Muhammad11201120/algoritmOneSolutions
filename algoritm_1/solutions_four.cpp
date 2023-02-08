@@ -224,10 +224,10 @@ int main()
     // float loanMonths = readNumber("How Much You Will PAy Per Month?: ");
     // cout << "You Will Pay => (" << calcualteLoanPayment(loanAmount, loanMonths) << " $)  Per Month" << endl;
 
-    // if (checkAtmSecretKey())
-    // {
-    //     system("color 2f");
-    //     cout << "\nYour Balance is 7500 " << endl;
-    // };
+    if (checkAtmSecretKey())
+    {
+        system("color 2f");
+        cout << "\nYour Balance is 7500 " << endl;
+    };
     return 0;
 }
