@@ -1,7 +1,34 @@
 #include <iostream>
 #include <string>
 using namespace std;
-/***********Structs****************/
+
+/************Enums**********************/
+enum enDayOfWeeks
+{
+    sunday = 1,
+    monday = 2,
+    tuesday = 3,
+    wednesday = 4,
+    thuresday = 5,
+    friday = 6,
+    saturday = 7
+};
+enum enMonthOfYear
+{
+    Jan = 1,
+    Feb = 2,
+    Mar = 3,
+    Apr = 4,
+    May = 5,
+    Jun = 6,
+    Jul = 7,
+    Aug = 8,
+    Sep = 9,
+    Oct = 10,
+    Nov = 11,
+    Dec = 12
+};
+/***********Structs********************/
 struct stTaskDuration
 {
     float days, hours, minutes, seconds;
@@ -50,9 +77,89 @@ stTaskDuration readTaskDuration()
 }
 float calculateSeconds(stTaskDuration taskDuration)
 {
-    return taskDuration.seconds = taskDuration.seconds + taskDuration.minutes * 60 + taskDuration.hours * 60 * 60 + taskDuration.days * 60 * 60 * 24;
+    float durationInSeconds = taskDuration.days * 60 * 60 * 24;
+    durationInSeconds += taskDuration.hours * 60 * 60;
+    durationInSeconds += taskDuration.minutes * 60;
+    durationInSeconds += taskDuration.seconds;
+    return durationInSeconds;
 }
+stTaskDuration calculateTaskDurationToDaysHoursMinsSeconds(int seconds)
+{
+    stTaskDuration taskDuration;
+    const int SECONDSPERDAY = 24 * 60 * 60;
+    const int SECONDSPERHOUR = 60 * 60;
+    const int SECONDSPERMINUTES = 60;
+    int remindder = 0;
+    taskDuration.days = (seconds / SECONDSPERDAY);
+    remindder = seconds % SECONDSPERDAY;
+    taskDuration.hours = (remindder / SECONDSPERHOUR);
+    remindder %= SECONDSPERHOUR;
+    taskDuration.minutes = (remindder / SECONDSPERMINUTES);
+    remindder %= SECONDSPERMINUTES;
+    taskDuration.seconds = remindder;
 
+    return taskDuration;
+}
+void printTaskDurationDaysHoursMinutesSeconds(stTaskDuration taskDuration)
+{
+    cout << "\n*****************************\n\n";
+    cout << taskDuration.days << ":" << taskDuration.hours << ":" << taskDuration.minutes << ":" << taskDuration.seconds << endl;
+    cout << "\n*****************************\n";
+}
+string checkDay(int day)
+{
+    switch (day)
+    {
+    case enDayOfWeeks::sunday:
+        return "Sunday";
+    case enDayOfWeeks::monday:
+        return "Monday";
+    case enDayOfWeeks::tuesday:
+        return "Tuesday";
+    case enDayOfWeeks::wednesday:
+        return "Wednesday";
+    case enDayOfWeeks::thuresday:
+        return "Thuresday";
+    case enDayOfWeeks::friday:
+        return "Friday";
+    case enDayOfWeeks::saturday:
+        return "Saturday";
+    default:
+        return "You Have Entered Wrong Day Number ..";
+    }
+}
+string checkMonth(int month)
+{
+    switch (month)
+    {
+    case enMonthOfYear::Jan:
+        return "January";
+    case enMonthOfYear::Feb:
+        return "February";
+    case enMonthOfYear::Mar:
+        return "March";
+    case enMonthOfYear::Apr:
+        return "April";
+    case enMonthOfYear::May:
+        return "May";
+    case enMonthOfYear::Jun:
+        return "June";
+    case enMonthOfYear::Jul:
+        return "July";
+    case enMonthOfYear::Aug:
+        return "August";
+    case enMonthOfYear::Sep:
+        return "Septemper";
+    case enMonthOfYear::Oct:
+        return "Octoper";
+    case enMonthOfYear::Nov:
+        return "November";
+    case enMonthOfYear::Dec:
+        return "December";
+    default:
+        return "You Have Entered Wrong Month Number ..";
+    }
+}
 /*************Main****************/
 int main()
 {
@@ -60,7 +167,13 @@ int main()
 
     // cout << "You Have Worked => ( " << calculateNumberOfDays(hours) << " ) Days." << endl;
     // cout << "You Have Worked => ( " << calculateNumberOfWeeks(hours) << " ) Weeks." << endl;
-    stTaskDuration taskDuration = readTaskDuration();
-    cout << "Working Seconds Are => " << calculateSeconds(taskDuration) << endl;
+    // stTaskDuration taskDuration = readTaskDuration();
+    // cout << "Working Seconds Are => " << calculateSeconds(taskDuration) << endl;
+    // int taskDuration = readNumber("Enter Task Duration With Seconds: ");
+    // printTaskDurationDaysHoursMinutesSeconds(calculateTaskDurationToDaysHoursMinsSeconds(taskDuration));
+    // int day = readNumber("Enter Positive Day Number From 1 to 7: ");
+    // cout << "The Day is => " << checkDay(day) << endl;
+    // int month = readNumber("Enter Positive Mont Number From 1 to 12: ");
+    // cout << "The Day is => " << checkMonth(month) << endl;
     return 0;
 }
