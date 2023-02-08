@@ -28,6 +28,11 @@ enum enMonthOfYear
     Nov = 11,
     Dec = 12
 };
+enum enAsciiCode
+{
+    CAPITALL_START = 65,
+    CAPITAL_END = 90,
+};
 /***********Structs********************/
 struct stTaskDuration
 {
@@ -160,6 +165,42 @@ string checkMonth(int month)
         return "You Have Entered Wrong Month Number ..";
     }
 }
+void printLeetersFromAToZ()
+{
+    for (short i = enAsciiCode::CAPITALL_START; i <= enAsciiCode::CAPITAL_END; i++)
+    {
+        cout << "Letter => " << char(i) << endl;
+    }
+}
+float calcualteLoanMonths(float &loanAmoount, float &loanPayment)
+{
+    return loanAmoount / loanPayment;
+}
+float calcualteLoanPayment(float &loanAmoount, float &loanMonths)
+{
+    return loanAmoount / loanMonths;
+}
+bool checkAtmSecretKey()
+{
+    int secretKey;
+    short counter = 3;
+    do
+    {
+        counter--;
+        int secretKey = readNumber("Enter your PIN: ");
+        if (secretKey == 1234)
+        {
+            return 1;
+        }
+        else
+        {
+            cout << "\nWrong Pin..\n";
+            system("color 4f");
+        }
+
+    } while (counter >= 1 && secretKey != 1234);
+    return 0;
+}
 /*************Main****************/
 int main()
 {
@@ -175,5 +216,18 @@ int main()
     // cout << "The Day is => " << checkDay(day) << endl;
     // int month = readNumber("Enter Positive Mont Number From 1 to 12: ");
     // cout << "The Day is => " << checkMonth(month) << endl;
+    // printLeetersFromAToZ();
+    // float loanAmount = readNumber("How Much The Loan: ");
+    // float loanPayment = readNumber("How Much You Will PAy Per Month?: ");
+    // cout << "You Will Finish The Loan In => (" << calcualteLoanMonths(loanAmount, loanPayment) << ") Months" << endl;
+    // float loanAmount = readNumber("How Much The Loan: ");
+    // float loanMonths = readNumber("How Much You Will PAy Per Month?: ");
+    // cout << "You Will Pay => (" << calcualteLoanPayment(loanAmount, loanMonths) << " $)  Per Month" << endl;
+
+    if (checkAtmSecretKey())
+    {
+        system("color 2f");
+        cout << "\nYour Balance is 7500 " << endl;
+    };
     return 0;
 }
