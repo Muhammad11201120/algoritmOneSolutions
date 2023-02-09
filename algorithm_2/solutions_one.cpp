@@ -121,18 +121,14 @@ void printPerfectNumberFromOneToN(int number)
         printIsPerfect(i);
     }
 }
-string readNumber()
+void printDigits(int number)
 {
-    string num;
-    cout << "Enter A nmber: ";
-    cin >> num;
-    return num;
-}
-void reverseNumber(string num)
-{
-    for (int i = num.length(); i >= 0; i--)
+    int reminder = 0; // to srtore last digit.
+    while (number > 0)
     {
-        cout << num[i] << endl;
+        reminder = number % 10; //  store last digit in reminder.
+        number = number / 10;   // cut last digit
+        cout << reminder << endl;
     }
 }
 /************Main********/
@@ -143,6 +139,7 @@ int main()
     // printISPrimaty(readPositiveNumber());
     // printIsPerfectOrNot(readPositiveNumber());
     // printPerfectNumberFromOneToN(readPositiveNumber());
-    reverseNumber(readNumber());
+    // reverseNumber(readNumber());
+    printDigits(readPositiveNumber());
     return 0;
 }
