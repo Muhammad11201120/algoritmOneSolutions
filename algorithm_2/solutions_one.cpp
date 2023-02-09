@@ -131,6 +131,56 @@ void printDigits(int number)
         cout << reminder << endl;
     }
 }
+void printSumDigits(int number)
+{
+    int reminder = 0, sum = 0;
+    while (number > 0)
+    {
+        reminder = number % 10;
+        number /= 10;
+        sum += reminder;
+    }
+    cout << "Sum Result is => " << sum << endl;
+}
+void printReversedDigits(int number)
+{
+    int reminder = 0, numberTwo = 0;
+    while (number > 0)
+    {
+        reminder = number % 10;
+        number /= 10;
+        numberTwo = numberTwo * 10 + reminder;
+    }
+    cout << numberTwo << endl;
+}
+
+int printNumberFrequenty(int number, short frequenty)
+{
+    int reminder = 0, ittr = 0;
+    while (number > 0)
+    {
+        reminder = number % 10;
+        number = number / 10;
+        if (reminder == frequenty)
+        {
+            ittr++;
+        }
+    }
+    return ittr;
+}
+void printFerquencyNumbers(int number)
+{
+    short freq = 0;
+    for (int i = 0; i < 10; i++)
+    {
+        freq = printNumberFrequenty(number, i);
+
+        if (freq > 0)
+        {
+            cout << "Digit " << i << " Frequeny is => " << freq << endl;
+        }
+    }
+}
 /************Main********/
 int main()
 {
@@ -140,6 +190,12 @@ int main()
     // printIsPerfectOrNot(readPositiveNumber());
     // printPerfectNumberFromOneToN(readPositiveNumber());
     // reverseNumber(readNumber());
-    printDigits(readPositiveNumber());
+    // printDigits(readPositiveNumber());
+    // printSumDigits(readPositiveNumber());
+    // printReversedDigits(readPositiveNumber());
+    // int number = readPositiveNumber();
+    // int freq = readPositiveNumber();
+    // cout << "Digit " << number << " Frequency is => " << printNumberFrequenty(number, freq) << endl;
+    printFerquencyNumbers(readPositiveNumber());
     return 0;
 }
