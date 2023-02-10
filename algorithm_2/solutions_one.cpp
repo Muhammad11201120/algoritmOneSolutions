@@ -131,6 +131,7 @@ void printDigits(int number)
         cout << reminder << endl;
     }
 }
+
 void printSumDigits(int number)
 {
     int reminder = 0, sum = 0;
@@ -142,7 +143,7 @@ void printSumDigits(int number)
     }
     cout << "Sum Result is => " << sum << endl;
 }
-void printReversedDigits(int number)
+int reversedDigits(int number)
 {
     int reminder = 0, numberTwo = 0;
     while (number > 0)
@@ -151,10 +152,10 @@ void printReversedDigits(int number)
         number /= 10;
         numberTwo = numberTwo * 10 + reminder;
     }
-    cout << numberTwo << endl;
+    return numberTwo;
 }
 
-int printNumberFrequenty(int number, short frequenty)
+int NumberFrequenty(int number, short frequenty)
 {
     int reminder = 0, ittr = 0;
     while (number > 0)
@@ -168,18 +169,33 @@ int printNumberFrequenty(int number, short frequenty)
     }
     return ittr;
 }
+void NumberPosition(int number)
+{
+    int reminder = 0, position = 0;
+    while (number > 0)
+    {
+        reminder = number % 10;
+        position++;
+        number = number / 10;
+        cout << "Digit: (" << reminder << ") in position => " << position << endl;
+    }
+}
 void printFerquencyNumbers(int number)
 {
     short freq = 0;
     for (int i = 0; i < 10; i++)
     {
-        freq = printNumberFrequenty(number, i);
+        freq = NumberFrequenty(number, i);
 
         if (freq > 0)
         {
             cout << "Digit " << i << " Frequeny is => " << freq << endl;
         }
     }
+}
+int isPalindrom(int number)
+{
+    return (number == reversedDigits(number));
 }
 /************Main********/
 int main()
@@ -189,13 +205,24 @@ int main()
     // printISPrimaty(readPositiveNumber());
     // printIsPerfectOrNot(readPositiveNumber());
     // printPerfectNumberFromOneToN(readPositiveNumber());
-    // reverseNumber(readNumber());
+
     // printDigits(readPositiveNumber());
     // printSumDigits(readPositiveNumber());
-    // printReversedDigits(readPositiveNumber());
+    // cout << reversedDigits(readPositiveNumber());
     // int number = readPositiveNumber();
     // int freq = readPositiveNumber();
     // cout << "Digit " << number << " Frequency is => " << printNumberFrequenty(number, freq) << endl;
-    printFerquencyNumbers(readPositiveNumber());
+    // printFerquencyNumbers(readPositiveNumber());
+    // NumberPosition(readPositiveNumber());
+    // printDigits(reversedDigits(readPositiveNumber()));
+    // if (isPalindrom(readPositiveNumber()))
+    // {
+    //     cout << "Yes It Is Palindrom Number.." << endl;
+    // }
+    // else
+    // {
+    //     cout << "No It Is Not Palindrom Number.." << endl;
+    // }
+
     return 0;
 }
