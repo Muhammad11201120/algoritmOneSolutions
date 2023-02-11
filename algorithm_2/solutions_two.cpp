@@ -116,6 +116,22 @@ void guessPassowrd(string pass)
             break;
     }
 }
+string incriptionStr(string str, int incriptionKey)
+{
+    for (int i = 0; i <= str.length(); i++)
+    {
+        str[i] = char((int)str[i] + incriptionKey);
+    }
+    return str;
+}
+string decriptionStr(string str, int incriptionKey)
+{
+    for (int i = 0; i <= str.length(); i++)
+    {
+        str[i] = char((int)str[i] - incriptionKey);
+    }
+    return str;
+}
 /*********************Main*********************/
 int main()
 {
@@ -124,6 +140,12 @@ int main()
     // invertedLetterPattern(readPositiveNumber());
     // letterPattern(readPositiveNumber());
     // wordsFromAtoZ();
-    guessPassowrd(readString());
+    // guessPassowrd(readString());
+    string text = readString();
+    int incriptionKey = 2;
+
+    cout << "Text Before incriptionStr: " << text << endl;
+    cout << "Text After incriptionStr: " << incriptionStr(text, incriptionKey) << endl;
+    cout << "Text After decriptionStr: " << decriptionStr(text, incriptionKey) << endl;
     return 0;
 }
