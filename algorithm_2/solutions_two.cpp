@@ -1,6 +1,15 @@
 #include <iostream>
 #include <string>
+#include <cstdlib>
 using namespace std;
+/**********************Enums******************/
+enum enRandum
+{
+    SmallLetter = 1,
+    CapitalLetter = 2,
+    SpecialCharacter = 3,
+    Digits = 4
+};
 /********************Functions******************/
 int readPositiveNumber()
 {
@@ -116,7 +125,7 @@ void guessPassowrd(string pass)
             break;
     }
 }
-string incriptionStr(string str, int incriptionKey)
+string incriptionStr(string &str, int incriptionKey)
 {
     for (int i = 0; i <= str.length(); i++)
     {
@@ -124,7 +133,7 @@ string incriptionStr(string str, int incriptionKey)
     }
     return str;
 }
-string decriptionStr(string str, int incriptionKey)
+string decriptionStr(string &str, int incriptionKey)
 {
     for (int i = 0; i <= str.length(); i++)
     {
@@ -132,20 +141,64 @@ string decriptionStr(string str, int incriptionKey)
     }
     return str;
 }
+int randNumber()
+{
+    int range = 0;
+    for (int i = 1; i <= 10; i++)
+    {
+        range = rand() % 10;
+    }
+    return range;
+}
+int randNumber(int from, int to)
+{
+    int randNum = rand() % (to - from + 1) + from;
+    return randNum;
+}
+char randomSmallCapitalCharDigit(enRandum charType)
+{
+    switch (charType)
+    {
+    case enRandum::SmallLetter:
+        return char(randNumber(97, 122));
+    case enRandum::CapitalLetter:
+        return char(randNumber(65, 67));
+    case enRandum::Digits:
+        return char(randNumber(48, 58));
+    }
+    return char(randNumber(33, 47));
+}
 /*********************Main*********************/
 int main()
 {
+    srand((unsigned)time(NULL));
     // invertedPsttern(readPositiveNumber());
     // numberPattren(readPositiveNumber());
     // invertedLetterPattern(readPositiveNumber());
     // letterPattern(readPositiveNumber());
     // wordsFromAtoZ();
     // guessPassowrd(readString());
-    string text = readString();
-    int incriptionKey = 2;
+    // string text = readString();
+    // int incriptionKey = 2;
 
-    cout << "Text Before incriptionStr: " << text << endl;
-    cout << "Text After incriptionStr: " << incriptionStr(text, incriptionKey) << endl;
-    cout << "Text After decriptionStr: " << decriptionStr(text, incriptionKey) << endl;
+    // cout << "Text Before incriptionStr: " << text << endl;
+    // cout << "Text After incriptionStr: " << incriptionStr(text, incriptionKey) << endl;
+    // cout << "Text After decriptionStr: " << decriptionStr(text, incriptionKey) << endl;
+    // cout << randNumber(1, 10);
+    // int x;
+    // int y;
+
+    // x = time(NULL);
+    // for (int i = 1; i <= 10000; i++)
+    // {
+    //     cout << i << endl;
+    // }
+    // y = time(NULL);
+    // cout << "Time Token => " << y - x << endl;
+    cout << randomSmallCapitalCharDigit(enRandum::SmallLetter) << endl;
+    cout << randomSmallCapitalCharDigit(enRandum::CapitalLetter) << endl;
+    cout << randomSmallCapitalCharDigit(enRandum::Digits) << endl;
+    cout << randomSmallCapitalCharDigit(enRandum::SpecialCharacter) << endl;
+
     return 0;
 }
