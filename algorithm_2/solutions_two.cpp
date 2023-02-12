@@ -141,7 +141,7 @@ string decriptionStr(string &str, int incriptionKey)
     }
     return str;
 }
-int randNumber()
+int randNumberTo10()
 {
     int range = 0;
     for (int i = 1; i <= 10; i++)
@@ -150,12 +150,17 @@ int randNumber()
     }
     return range;
 }
+int randNumbertTo50()
+{
+
+    return rand() % 50;
+}
 int randNumber(int from, int to)
 {
     int randNum = rand() % (to - from + 1) + from;
     return randNum;
 }
-char randomSmallCapitalCharDigit(enRandum charType)
+char getRandomChar(enRandum charType)
 {
     switch (charType)
     {
@@ -167,6 +172,90 @@ char randomSmallCapitalCharDigit(enRandum charType)
         return char(randNumber(48, 58));
     }
     return char(randNumber(33, 47));
+}
+string generateWord(enRandum keyType, short length)
+{
+    string word = "";
+    for (short i = 1; i <= length; i++)
+    {
+        word = word + getRandomChar(enRandum::CapitalLetter);
+    }
+    return word;
+}
+string generateKey()
+{
+    string word = "";
+    word = generateWord(enRandum::CapitalLetter, 4) + "-";
+    word += generateWord(enRandum::CapitalLetter, 4) + "-";
+    word += generateWord(enRandum::CapitalLetter, 4) + "-";
+    word += generateWord(enRandum::CapitalLetter, 4);
+    return word;
+}
+void GenerateKeys(int numberOfKeys)
+{
+    for (int i = 1; i <= numberOfKeys; i++)
+    {
+        cout << "Key [" << i << "] : " << generateKey() << endl;
+    }
+}
+int setArrayElements()
+{
+    int index = readPositiveNumber();
+    return index;
+}
+int readPositiveArrayElements()
+{
+    int number;
+    do
+    {
+        cout << "How Many Element In The Array: ";
+        cin >> number;
+    } while (number < 0);
+    return number;
+}
+void readArray(int arr[100], int &elements)
+{
+    cout << "Enter Array Elements: " << endl;
+    for (int i = 1; i <= elements; i++)
+    {
+        cout << "Indix number [" << i << "] : ";
+        cin >> arr[i];
+    }
+}
+void getArray(int arr[100], int elements)
+{
+    for (int i = 1; i <= elements; i++)
+    {
+        cout << arr[i] << endl;
+    }
+}
+int checkElementInArray(int arr[100], int indexes, int element)
+{
+    int counter = 0;
+
+    for (int i = 1; i <= indexes; i++)
+    {
+        if (arr[i] == element)
+        {
+            counter++;
+        }
+    }
+    return counter;
+}
+void setArrOfDigits(int arr[100], int &indexes)
+{
+    for (int i = 0; i < indexes; i++)
+    {
+        arr[i] = randNumbertTo50();
+    }
+}
+void getArrayOfDigits(int arr[100], int indexes)
+{
+    cout << "Elements Of Array Are => ";
+    for (int i = 0; i < indexes; i++)
+    {
+        cout << arr[i] << " ";
+    }
 }
 /*********************Main*********************/
 int main()
@@ -195,10 +284,23 @@ int main()
     // }
     // y = time(NULL);
     // cout << "Time Token => " << y - x << endl;
-    cout << randomSmallCapitalCharDigit(enRandum::SmallLetter) << endl;
-    cout << randomSmallCapitalCharDigit(enRandum::CapitalLetter) << endl;
-    cout << randomSmallCapitalCharDigit(enRandum::Digits) << endl;
-    cout << randomSmallCapitalCharDigit(enRandum::SpecialCharacter) << endl;
-
+    // cout << getRandomChar(enRandum::SmallLetter) << endl;
+    // cout << getRandomChar(enRandum::CapitalLetter) << endl;
+    // cout << getRandomChar(enRandum::Digits) << endl;
+    // cout << getRandomChar(enRandum::SpecialCharacter) << endl;
+    // GenerateKeys(readPositiveNumber());
+    // int arr[100];
+    // int element = readPositiveArrayElements();
+    // int numberToCheck;
+    // readArray(arr, element);
+    // cout << "\nOriginal Array Elements Are:\n";
+    // getArray(arr, element);
+    // cout << "Enter A Number TO Check: ";
+    // cin >> numberToCheck;
+    // cout << numberToCheck << " Is Repeated: " << checkElementInArray(arr, element, numberToCheck) << endl;
+    int arr[100];
+    int indexes = readPositiveNumber();
+    setArrOfDigits(arr, indexes);
+    getArrayOfDigits(arr, indexes);
     return 0;
 }
