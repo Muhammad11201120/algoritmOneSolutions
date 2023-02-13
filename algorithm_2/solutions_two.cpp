@@ -224,9 +224,9 @@ void readArray(int arr[100], int &elements)
 }
 void getArray(int arr[100], int elements)
 {
-    for (int i = 1; i <= elements; i++)
+    for (int i = 0; i < elements; i++)
     {
-        cout << arr[i] << endl;
+        cout << arr[i] << " ";
     }
 }
 int checkElementInArray(int arr[100], int indexes, int element)
@@ -254,6 +254,80 @@ void getArrayOfDigits(int arr[100], int indexes)
     cout << "Elements Of Array Are => ";
     for (int i = 0; i < indexes; i++)
     {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+int maxNumberInRandomArray(int arr[100], int indexes)
+{
+    int max = 0;
+    for (int i = 0; i < indexes; i++)
+    {
+        if (arr[i] > max)
+        {
+            max = arr[i];
+        }
+    }
+    return max;
+}
+int minNumberInRandomArray(int arr[100], int indexes)
+{
+    int min = arr[0];
+    for (int i = 0; i < indexes; i++)
+    {
+
+        if (arr[i] < min)
+        {
+            min = arr[i];
+        }
+    }
+    return min;
+}
+int sumNumbersInRandomArray(int arr[], int indexes)
+{
+    int sum = 0;
+    for (int i = 0; i < indexes; i++)
+    {
+        sum += arr[i];
+    }
+    return sum;
+}
+float averageOfRandomArray(int arr[], int indexes)
+{
+    return (float)sumNumbersInRandomArray(arr, indexes) / indexes;
+}
+void copyArray(int arrSource[], int arrDistnation[], int &indexes)
+{
+    for (int i = 0; i < indexes; i++)
+    {
+        arrDistnation[i] = arrSource[i];
+    }
+}
+void copyPrimeNumbersOnArray(int arrSource[], int arrDistnation[], int indexes)
+{
+    bool isPrime;
+    for (int i = 0; i < indexes; i++)
+    {
+        isPrime = true;
+        for (int j = 2; j < arrSource[i]; j++)
+        {
+            if (arrSource[i] % j == 0)
+            {
+                isPrime = false;
+            }
+        }
+        if (isPrime)
+            arrDistnation[i] = arrSource[i];
+        else
+            arrDistnation[i] = 0;
+    }
+}
+void getArrayElementWithoutZero(int arr[], int indexes)
+{
+    for (int i = 0; i < indexes; i++)
+    {
+        if (arr[i] == 0)
+            continue;
         cout << arr[i] << " ";
     }
 }
@@ -302,5 +376,15 @@ int main()
     int indexes = readPositiveNumber();
     setArrOfDigits(arr, indexes);
     getArrayOfDigits(arr, indexes);
+    cout << "Max Number is => " << maxNumberInRandomArray(arr, indexes) << endl;
+    cout << "Min Number is => " << minNumberInRandomArray(arr, indexes) << endl;
+    cout << "Sum Of Array Elements is => " << sumNumbersInRandomArray(arr, indexes) << endl;
+    cout << "Average Of Array Elements Is => " << averageOfRandomArray(arr, indexes) << endl;
+    int arr2[100];
+    // copyArray(arr, arr2, indexes);
+    // getArrayOfDigits(arr2, indexes);
+    copyPrimeNumbersOnArray(arr, arr2, indexes);
+    cout << "Primeary Numbers In Array 2 is => ";
+    getArrayElementWithoutZero(arr2, indexes);
     return 0;
 }
