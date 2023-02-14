@@ -10,6 +10,11 @@ enum enRandum
     SpecialCharacter = 3,
     Digits = 4
 };
+enum enIsPrime
+{
+    Prime,
+    NotPrime
+};
 /********************Functions******************/
 int readPositiveNumber()
 {
@@ -303,32 +308,37 @@ void copyArray(int arrSource[], int arrDistnation[], int &indexes)
         arrDistnation[i] = arrSource[i];
     }
 }
-void copyPrimeNumbersOnArray(int arrSource[], int arrDistnation[], int indexes)
+enIsPrime checkIsPrimary(int number)
 {
-    bool isPrime;
-    for (int i = 0; i < indexes; i++)
+    // int n = round(number / 2); // optimizing
+    bool isPrime = true;
+    for (int i = 2; i < number; i++)
     {
-        isPrime = true;
-        for (int j = 2; j < arrSource[i]; j++)
+        if (number % i == 0)
         {
-            if (arrSource[i] % j == 0)
-            {
-                isPrime = false;
-            }
+            return enIsPrime::NotPrime;
         }
-        if (isPrime)
-            arrDistnation[i] = arrSource[i];
-        else
-            arrDistnation[i] = 0;
     }
+    return enIsPrime::Prime;
 }
-void getArrayElementWithoutZero(int arr[], int indexes)
+void getArrayElementWithoutZero(int arr1[], int arr2[], int indexes1, int &indexes2)
+{
+    int counter = 0;
+    for (int i = 0; i < indexes1; i++)
+    {
+        if (checkIsPrimary(arr1[i]) == enIsPrime::Prime)
+        {
+            arr2[counter] = arr1[i];
+            counter++; // here it will end with +1
+        }
+    }
+    indexes2 = --counter; // here we decrease the counter
+}
+void sumTwoArraysElements(int arr1[], int arr2[], int arrSum[], int indexes)
 {
     for (int i = 0; i < indexes; i++)
     {
-        if (arr[i] == 0)
-            continue;
-        cout << arr[i] << " ";
+        arrSum[i] = arr1[i] + arr2[i];
     }
 }
 /*********************Main*********************/
@@ -372,19 +382,32 @@ int main()
     // cout << "Enter A Number TO Check: ";
     // cin >> numberToCheck;
     // cout << numberToCheck << " Is Repeated: " << checkElementInArray(arr, element, numberToCheck) << endl;
-    int arr[100];
-    int indexes = readPositiveNumber();
-    setArrOfDigits(arr, indexes);
-    getArrayOfDigits(arr, indexes);
-    cout << "Max Number is => " << maxNumberInRandomArray(arr, indexes) << endl;
-    cout << "Min Number is => " << minNumberInRandomArray(arr, indexes) << endl;
-    cout << "Sum Of Array Elements is => " << sumNumbersInRandomArray(arr, indexes) << endl;
-    cout << "Average Of Array Elements Is => " << averageOfRandomArray(arr, indexes) << endl;
-    int arr2[100];
-    // copyArray(arr, arr2, indexes);
-    // getArrayOfDigits(arr2, indexes);
-    copyPrimeNumbersOnArray(arr, arr2, indexes);
-    cout << "Primeary Numbers In Array 2 is => ";
-    getArrayElementWithoutZero(arr2, indexes);
+    // int arr[100];
+    // int indexes = readPositiveNumber();
+    // setArrOfDigits(arr, indexes);
+    // getArrayOfDigits(arr, indexes);
+    // cout << "Max Number is => " << maxNumberInRandomArray(arr, indexes) << endl;
+    // cout << "Min Number is => " << minNumberInRandomArray(arr, indexes) << endl;
+    // cout << "Sum Of Array Elements is => " << sumNumbersInRandomArray(arr, indexes) << endl;
+    // cout << "Average Of Array Elements Is => " << averageOfRandomArray(arr, indexes) << endl;
+    // int arr2[100];
+    // int indexes2 = 0;
+    // // copyArray(arr, arr2, indexes);
+    // // getArrayOfDigits(arr2, indexes);
+    // getArrayElementWithoutZero(arr, arr2, indexes, indexes2);
+    // cout << "Primeary Numbers In Array 2 is => ";
+    // getArray(arr2, indexes2);
+    int arr1[50], arr2[50], arr3[50], indexes;
+    indexes = setArrayElements();
+    setArrOfDigits(arr1, indexes);
+    setArrOfDigits(arr2, indexes);
+    sumTwoArraysElements(arr1, arr2, arr3, indexes);
+
+    cout << "\nArray 1: ";
+    getArray(arr1, indexes);
+    cout << "\nArray 2: ";
+    getArray(arr2, indexes);
+    cout << "\nSum Of 2 Arrays Elements is: ";
+    getArray(arr3, indexes);
     return 0;
 }

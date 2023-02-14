@@ -1,1 +1,1 @@
-j
+    int counter = indexes;
