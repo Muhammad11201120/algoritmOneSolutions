@@ -71,7 +71,7 @@ bool isPrimary(int number)
         {
             return false;
         }
-        }
+    }
     return true;
 }
 void copyPrimaryNumberToArray(int arr1[], int arr2[], int &arr1Length, int &arr2Length)
@@ -81,6 +81,18 @@ void copyPrimaryNumberToArray(int arr1[], int arr2[], int &arr1Length, int &arr2
         if (isPrimary(arr1[i]))
         {
             addElementToArray(arr1[i], arr2, arr2Length);
+        }
+    }
+}
+void copyDistenctElementsToArray(int arr1[], int arr2[], int &arr1Length, int &arr2Length)
+{
+    int previusElement = arr1[0];
+    for (int i = 0; i < arr1Length; i++)
+    {
+        if (arr1[i + 1] != previusElement)
+        {
+            addElementToArray(arr1[i], arr2, arr2Length);
+            previusElement = arr1[i];
         }
     }
 }
@@ -102,22 +114,22 @@ int main()
     int arr1Length = 0;
     int arr2Length = 0;
 
-    readRandomElementsToArray(arr1, arr1Length);
-
+    // readRandomElementsToArray(arr1, arr1Length);
+    addUserNumberToArray(arr1, arr1Length);
     cout << "Array One Elements: " << endl;
     getArray(arr1, arr1Length);
 
     // copyArrayElements(arr1, arr2, arr1Length, arr2Length);
     // copyOddElementsToArray(arr1, arr2, arr1Length, arr2Length);
-    copyPrimaryNumberToArray(arr1, arr2, arr1Length, arr2Length);
-
+    // copyPrimaryNumberToArray(arr1, arr2, arr1Length, arr2Length);
+    copyDistenctElementsToArray(arr1, arr2, arr1Length, arr2Length);
     // cout << "\nArray Two Elements After Copy: " << endl;
     // getArray(arr2, arr2Length);
 
     // cout << "\nArray Two Odd Elements : " << endl;
     // getArray(arr2, arr2Length);
 
-    cout << "\nArray Two Primary Elements : " << endl;
+    cout << "\nArray Two Distenct Elements : " << endl;
     getArray(arr2, arr2Length);
 
     return 0;
