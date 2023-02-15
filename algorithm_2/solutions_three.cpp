@@ -22,7 +22,6 @@ int readPositiveNumber(string msg)
     } while (number < 0);
     return number;
 }
-
 void readArray(int arr[100], int &elements)
 {
     for (int i = 0; i < elements; i++)
@@ -73,7 +72,6 @@ void copyReversedArrayElements(int arr1[], int arr2[], int indexes)
         counter--;
     }
 }
-
 char getRandomChar(enRandum charType)
 {
     switch (charType)

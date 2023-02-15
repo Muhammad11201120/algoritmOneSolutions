@@ -131,7 +131,6 @@ void printDigits(int number)
         cout << reminder << endl;
     }
 }
-
 void printSumDigits(int number)
 {
     int reminder = 0, sum = 0;
@@ -154,7 +153,6 @@ int reversedDigits(int number)
     }
     return numberTwo;
 }
-
 int NumberFrequenty(int number, short frequenty)
 {
     int reminder = 0, ittr = 0;
